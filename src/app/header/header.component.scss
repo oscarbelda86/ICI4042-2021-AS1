@@ -1,0 +1,46 @@
+ul {
+    width: 20rem;
+    display: inline-flex;
+    list-style: none;
+}
+
+.red {
+    background: #F44236;
+}
+
+.green {
+    background: #FFEB3B;
+}
+
+.yellow {
+    background: #CEDC39;
+}
+
+.circle {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+ul li {
+    width: 25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.titulo {
+    width: 25rem;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}

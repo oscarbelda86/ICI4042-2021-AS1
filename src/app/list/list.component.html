@@ -1,1 +1,25 @@
-<p>list works!</p>
+<div class="container">
+    <div class="">
+        <div *ngFor="let tarea of finished">
+            <div class="tarea-style finished">
+                {{tarea}}
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <div *ngFor="let tarea of ongoing">
+            <div class="tarea-style ongoing">
+                {{tarea}}
+
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <div *ngFor="let tarea of started">
+            <div class="tarea-style started">
+                {{tarea}}
+
+            </div>
+        </div>
+    </div>
+</div>

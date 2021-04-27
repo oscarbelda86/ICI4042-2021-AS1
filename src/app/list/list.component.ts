@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
+  started = ["commit last update"]
+  finished = ["build an angular framework","create a git project"]
+  ongoing = ["build an app","commit updates"]
   constructor() { }
 
   ngOnInit(): void {

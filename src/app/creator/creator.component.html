@@ -1,1 +1,22 @@
-<p>creator works!</p>
+<form [formGroup]="tarea" (ngSubmit)="updateList()">
+    <div>
+        <label>Titulo</label>
+        <div>
+            <input class="text-input" formControlName="title" type="text" placeholder="Titulo">
+        </div>
+    </div>
+    <div>
+        <label for="status">Estado</label>
+        <div>
+            <select formControlName="status" name="status" id="">
+                <option *ngFor="let order of status; let i = index" [value]="status[i]">
+                    {{status[i]}}
+                  </option>
+            </select>
+        </div>
+    </div>
+    <div class="buttons">
+        <input type="submit" value="crear">
+        <input type="button" value="cancelar" (click)="formReset()">
+    </div>
+</form>
