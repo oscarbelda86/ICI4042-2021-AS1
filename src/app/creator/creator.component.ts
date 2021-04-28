@@ -36,12 +36,12 @@ export class CreatorComponent implements OnInit, OnChanges{
     this.showed = true;
     if (this.title == "summon"){
       this.summoned = true;
+      this.title = "";
       this.tarea.controls["title"].setValue("");
       return
     }
     this.summoned = false;
     this.tarea.controls["title"].setValue(this.title);
-
   }
 
   formReset(){
