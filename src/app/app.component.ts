@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ICI4240-semaforo-tareas'; 
+  title = 'ICI4240-semaforo-tareas';
+  editTitle = '';
+
+  editOnCreator(event:any){
+    console.log(event)
+    this.editTitle = event;
+  }
 }

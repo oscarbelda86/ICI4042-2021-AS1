@@ -8,15 +8,18 @@ import { ListaTareasService } from '../lista-tareas.service';
   templateUrl: './creator.component.html',
   styleUrls: ['./creator.component.scss']
 })
-export class CreatorComponent implements OnInit {
+export class CreatorComponent implements OnInit, OnChanges{
 
   showed = false;
   
+  @Input() title: string;
+
   tarea: FormGroup;
   statusList = ['started','ongoing','finished'];
   tareasService: ListaTareasService;
   
   constructor(public fb: FormBuilder, tareasService: ListaTareasService) {
+    this.title='';
     this.tarea = this.fb.group({
       title: ['', [Validators.required]],
       status: ['', [Validators.required]],
@@ -26,15 +29,19 @@ export class CreatorComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  ngOnChanges(){
+    this.showed = true;
+    console.log(this.title)
+    this.tarea.controls["title"].setValue(this.title);
+  }
 
   formReset(){
     this.tarea.controls["title"].setValue("");
     this.tarea.controls["status"].setValue("");
   }
 
-  cancelar(){
-    this.tarea.controls["title"].setValue("");
-    this.tarea.controls["status"].setValue("");
+  cancel(){
+    this.formReset();
     this.showed = false;
   }
 

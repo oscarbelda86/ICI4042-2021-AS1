@@ -12,9 +12,9 @@ export class ListComponent implements OnInit {
   ongoingWork : string[]
   finishedWork : string[]
   tareasService: ListaTareasService;
-  
+
   @Output()
-  emitter = new EventEmitter<string>();
+  editData = new EventEmitter<string>();
   
   constructor(tareasService: ListaTareasService ) { 
     this.startedWork = tareasService.mainList[0];
@@ -28,7 +28,9 @@ export class ListComponent implements OnInit {
   }
 
   edit(index:number, listIndex:number = 0){
-    console.log(index);
+    console.log(this.startedWork[index]);
+    
+    this.editData.emit(this.startedWork[index]);
   }
 
   ngOnInit(): void {
