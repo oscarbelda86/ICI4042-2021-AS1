@@ -1,13 +1,13 @@
-<div class="container">
+<div class="container-1">
     <div class="">
-        <div *ngFor="let tarea of finished">
+        <div *ngFor="let tarea of finishedWork">
             <div class="tarea-style finished">
                 {{tarea}}
             </div>
         </div>
     </div>
     <div class="">
-        <div *ngFor="let tarea of ongoing">
+        <div *ngFor="let tarea of ongoingWork">
             <div class="tarea-style ongoing">
                 {{tarea}}
 
@@ -15,10 +15,14 @@
         </div>
     </div>
     <div class="">
-        <div *ngFor="let tarea of started">
+        <div *ngFor="let tarea of startedWork; let i = index">
             <div class="tarea-style started">
-                {{tarea}}
-
+                <a (click)="edit(i)">
+                    {{tarea}}
+                </a>
+                <div class="icon">
+                    <a (click)="delete(i)" class="close"></a>
+                </div>
             </div>
         </div>
     </div>

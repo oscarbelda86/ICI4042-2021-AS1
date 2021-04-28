@@ -2,21 +2,23 @@
     <div>
         <label>Titulo</label>
         <div>
-            <input class="text-input" formControlName="title" type="text" placeholder="Titulo">
+            <input class="text-input" formControlName="title" id="title" type="text" placeholder="Titulo">
+            <div *ngIf="tarea.controls['title'].invalid">Titulo invalido</div>
         </div>
     </div>
     <div>
         <label for="status">Estado</label>
         <div>
-            <select formControlName="status" name="status" id="">
-                <option *ngFor="let order of status; let i = index" [value]="status[i]">
-                    {{status[i]}}
-                  </option>
+            <select formControlName="status" name="status">
+                <option *ngFor="let order of statusList; let i = index" [value]="statusList[i]">
+                    {{statusList[i]}}
+                </option>
             </select>
+            <div *ngIf="tarea.controls['status'].invalid">Estado invalido</div>
         </div>
     </div>
     <div class="buttons">
-        <input type="submit" value="crear">
+        <input type="submit" value="crear" [disabled]="tarea.controls['status'].invalid || tarea.controls['title'].invalid">
         <input type="button" value="cancelar" (click)="formReset()">
     </div>
 </form>

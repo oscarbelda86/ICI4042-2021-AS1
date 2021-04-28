@@ -7,20 +7,26 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { CreatorComponent } from './creator/creator.component';
 import { ListComponent } from './list/list.component';
+import { FooterComponent } from './footer/footer.component';
+
+import {ListaTareasService} from './lista-tareas.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     CreatorComponent,
-    ListComponent
+    ListComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
   ],
-  providers: [],
+  providers: [ListaTareasService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

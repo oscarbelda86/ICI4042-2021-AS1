@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ListaTareasService } from '../lista-tareas.service';
+
 
 @Component({
   selector: 'app-list',
@@ -6,11 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
+  startedWork : string[]
+  ongoingWork : string[]
+  finishedWork : string[]
+  tareasService: ListaTareasService;
+  
+  constructor(tareasService: ListaTareasService ) { 
+    this.startedWork = tareasService.mainList[0];
+    this.ongoingWork = tareasService.mainList[1];
+    this.finishedWork = tareasService.mainList[2];
+    this.tareasService = tareasService;
+  }
 
-  started = ["commit last update"]
-  finished = ["build an angular framework","create a git project"]
-  ongoing = ["build an app","commit updates"]
-  constructor() { }
+  delete(index:number){
+    this.tareasService.delete(index);
+  }
+
+  edit(index:number, listIndex:number = 0){
+    console.log(index);
+  }
 
   ngOnInit(): void {
   }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ListaTareasService } from '../lista-tareas.service';
+
 
 @Component({
   selector: 'app-creator',
@@ -9,17 +11,19 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class CreatorComponent implements OnInit {
 
   tarea: FormGroup;
-  status = ['started','ongoing','finished'];
+  statusList = ['started','ongoing','finished'];
+  tareasService: ListaTareasService;
 
-  constructor(public fb: FormBuilder) {
+  constructor(public fb: FormBuilder, tareasService: ListaTareasService) {
     this.tarea = this.fb.group({
-      id: ['', [Validators.required]],
       title: ['', [Validators.required]],
       status: ['', [Validators.required]],
    });
+   this.tareasService = tareasService;
   }
 
   ngOnInit(): void {
+    
   }
 
   formReset(){
@@ -27,7 +31,16 @@ export class CreatorComponent implements OnInit {
     this.tarea.controls["status"].setValue("");
   }
 
+  cancelar(){
+    this.tarea.controls["title"].setValue("");
+    this.tarea.controls["status"].setValue("");
+  }
+
+  validate(){
+    return (this.tarea.controls['title'].invalid && this.tarea.controls['status'].invalid);
+  }
+
   updateList(){
-    console.log(this.tarea.value);
+    this.tareasService.add(this.tarea.controls["title"].value,this.statusList.indexOf(this.tarea.controls["status"].value));
   };
 }
