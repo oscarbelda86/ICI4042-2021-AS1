@@ -7,9 +7,10 @@ export class ListaTareasService {
   mainDict = new Map<string, string[]>();
 
   constructor() { 
-    this.mainDict.set('started', ["commit last update","haha xd"])
-    this.mainDict.set("ongoing",["build an angular framework","create a git project ayudenme esta wea me esta matanto por dentro en serio la wea hasta cuando la wea seguira corriendo"])
-    this.mainDict.set("finished",["build an xd","commit updates"])
+    this.mainDict.set('started', ["ejemplo inicado 1","ejemplo iniciado 2"])
+    this.mainDict.set("ongoing",["ejemplo en proceso 1","ejemplo en proceso 2"])
+    this.mainDict.set("finished",["ejemplo finalizado 1","ejemplo finalizado 2"])
+
   }
 
   delete(listName:string, index:number){
