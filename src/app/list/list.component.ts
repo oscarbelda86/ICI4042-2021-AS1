@@ -8,29 +8,26 @@ import { ListaTareasService } from '../lista-tareas.service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  startedWork : string[]
-  ongoingWork : string[]
-  finishedWork : string[]
   tareasService: ListaTareasService;
 
   @Output()
-  editData = new EventEmitter<string>();
+  editData = new EventEmitter<(string)>();
   
   constructor(tareasService: ListaTareasService ) { 
-    this.startedWork = tareasService.mainList[0];
-    this.ongoingWork = tareasService.mainList[1];
-    this.finishedWork = tareasService.mainList[2];
+
     this.tareasService = tareasService;
   }
 
-  delete(index:number){
-    this.tareasService.delete(index);
+  delete(listName:string,index:number){
+    this.tareasService.delete(listName,index);
+  }
+  getList(listName:string){
+    return this.tareasService.getList(listName);
   }
 
-  edit(index:number, listIndex:number = 0){
-    console.log(this.startedWork[index]);
-    this.editData.emit(this.startedWork[index]);
-    this.tareasService.delete(index);
+  edit(index:number, listName:string = "started"){
+    this.editData.emit(this.tareasService.getList(listName)?.[index]);
+  //  this.tareasService.delete(listName,index);
   }
 
   ngOnInit(): void {

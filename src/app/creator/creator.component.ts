@@ -33,7 +33,6 @@ export class CreatorComponent implements OnInit, OnChanges{
   }
   ngOnChanges(){
     this.showed = true;
-    console.log(this.title)
     this.tarea.controls["title"].setValue(this.title);
   }
 
@@ -53,6 +52,12 @@ export class CreatorComponent implements OnInit, OnChanges{
   }
 
   updateList(){
-    this.tareasService.add(this.tarea.controls["title"].value,this.statusList.indexOf(this.tarea.controls["status"].value));
+    console.log(this.title);
+    if(this.title != ""){
+      this.tareasService.deleteFromAll(this.title);
+    }
+    this.tareasService.add(this.tarea.controls["title"].value,this.tarea.controls["status"].value);
+    this.showed = false;
+    this.formReset();
   };
 }
