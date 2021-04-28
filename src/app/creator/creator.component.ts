@@ -11,6 +11,7 @@ import { ListaTareasService } from '../lista-tareas.service';
 export class CreatorComponent implements OnInit, OnChanges{
 
   showed = false;
+  summoned = true;
   
   @Input() title: string;
 
@@ -34,8 +35,11 @@ export class CreatorComponent implements OnInit, OnChanges{
   ngOnChanges(){
     this.showed = true;
     if (this.title == "summon"){
+      this.summoned = true;
+      this.tarea.controls["title"].setValue("");
       return
     }
+    this.summoned = false;
     this.tarea.controls["title"].setValue(this.title);
 
   }

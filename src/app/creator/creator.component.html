@@ -18,7 +18,8 @@
         </div>
     </div>
     <div class="buttons">
-        <input type="submit" value="crear" [disabled]="tarea.controls['status'].invalid || tarea.controls['title'].invalid">
-        <input type="button" value="cancelar" (click)="cancel()">
+        <input type="submit" value="crear" *ngIf="summoned" [disabled]="tarea.controls['status'].invalid || tarea.controls['title'].invalid">
+        <input type="button" value="cancelar" *ngIf="summoned" (click)="cancel()">
+        <input type="submit" value="actualizar" *ngIf="!summoned" [disabled]="tarea.controls['status'].invalid || tarea.controls['title'].invalid">
     </div>
 </form>
