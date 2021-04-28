@@ -1,4 +1,4 @@
-<form [formGroup]="tarea" (ngSubmit)="updateList()">
+<form [formGroup]="tarea" (ngSubmit)="updateList()" *ngIf="showed">
     <div>
         <label>Titulo</label>
         <div>

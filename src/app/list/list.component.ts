@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output  } from '@angular/core';
 import { ListaTareasService } from '../lista-tareas.service';
 
 
@@ -12,6 +12,9 @@ export class ListComponent implements OnInit {
   ongoingWork : string[]
   finishedWork : string[]
   tareasService: ListaTareasService;
+  
+  @Output()
+  emitter = new EventEmitter<string>();
   
   constructor(tareasService: ListaTareasService ) { 
     this.startedWork = tareasService.mainList[0];
