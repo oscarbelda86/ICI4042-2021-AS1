@@ -33,7 +33,11 @@ export class CreatorComponent implements OnInit, OnChanges{
   }
   ngOnChanges(){
     this.showed = true;
+    if (this.title == "summon"){
+      return
+    }
     this.tarea.controls["title"].setValue(this.title);
+
   }
 
   formReset(){
