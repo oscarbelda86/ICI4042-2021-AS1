@@ -28,6 +28,8 @@ export class CreatorComponent implements OnInit, OnChanges{
   }
 
   ngOnInit(): void {
+    this.formReset();
+    this.showed = false;
   }
   ngOnChanges(){
     this.showed = true;

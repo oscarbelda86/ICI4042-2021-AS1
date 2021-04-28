@@ -29,8 +29,8 @@ export class ListComponent implements OnInit {
 
   edit(index:number, listIndex:number = 0){
     console.log(this.startedWork[index]);
-    
     this.editData.emit(this.startedWork[index]);
+    this.tareasService.delete(index);
   }
 
   ngOnInit(): void {

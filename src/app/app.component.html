@@ -1,4 +1,4 @@
 <app-header></app-header>
 <app-creator [title]="editTitle"></app-creator>
 <app-list (editData)="editOnCreator($event)"></app-list>
-<app-footer></app-footer>
+<app-footer (summon)="editOnCreator($event)"></app-footer>
