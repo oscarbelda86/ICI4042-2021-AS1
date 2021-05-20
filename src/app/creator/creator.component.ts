@@ -8,12 +8,13 @@ import { ListaTareasService } from '../lista-tareas.service';
   templateUrl: './creator.component.html',
   styleUrls: ['./creator.component.scss']
 })
-export class CreatorComponent implements OnInit, OnChanges{
+export class CreatorComponent implements OnInit{
 
   showed = false;
   summoned = true;
   
-  @Input() title: string;
+  @Input() title: string ='';
+
 
   tarea: FormGroup;
   statusList = ['started','ongoing','finished'];
@@ -32,16 +33,16 @@ export class CreatorComponent implements OnInit, OnChanges{
     this.formReset();
     this.showed = false;
   }
-  ngOnChanges(){
+
+  change(newTitle:string){
+    console.log(newTitle)
+    if(newTitle == ""){
+      this.summoned = false;
+    }else{this.summoned = true}
+    this.title = newTitle;
+    this.tarea.controls["title"].setValue(newTitle)
     this.showed = true;
-    if (this.title == "summon"){
-      this.summoned = true;
-      this.title = "";
-      this.tarea.controls["title"].setValue("");
-      return
-    }
-    this.summoned = false;
-    this.tarea.controls["title"].setValue(this.title);
+
   }
 
   formReset(){
@@ -52,11 +53,12 @@ export class CreatorComponent implements OnInit, OnChanges{
   cancel(){
     this.formReset();
     this.showed = false;
+    this.title ="canceled";
+    this.summoned = false;
   }
 
   validate(){
     return (this.tarea.controls['title'].invalid && this.tarea.controls['status'].invalid);
-
   }
 
   updateList(){

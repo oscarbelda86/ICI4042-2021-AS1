@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CreatorComponent } from './creator/creator.component';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,8 @@ export class AppComponent {
   editTitle = '';
 
   editOnCreator(event:any){
-    console.log(event)
+    console.log(event);
+    console.log(this.editTitle)
     this.editTitle = event;
   }
 }

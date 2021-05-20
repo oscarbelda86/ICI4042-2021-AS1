@@ -13,7 +13,8 @@ export class FooterComponent implements OnInit {
   constructor() { }
   
   emitSummon(){
-    this.summon.emit('summon');  
+    console.log("click summon")
+    this.summon.emit('');  
   }
 
   ngOnInit(): void {
