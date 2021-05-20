@@ -1,23 +1,28 @@
 <div class="container-1">
     <div class="">
-        <div *ngFor="let tarea of getList('finished')">
+        <div *ngFor="let tarea of getList('finished'); let i = index">
             <div class="tarea-style finished">
                 {{tarea}}
+                <div class="icon">
+                    <a (click)="delete('finished',i)" class="close"></a>
+                </div>
             </div>
         </div>
     </div>
     <div class="">
-        <div *ngFor="let tarea of getList('ongoing')">
+        <div *ngFor="let tarea of getList('ongoing'); let i = index">
             <div class="tarea-style ongoing">
                 {{tarea}}
-
+                <div class="icon">
+                    <a (click)="delete('ongoing',i)" class="close"></a>
+                </div>
             </div>
         </div>
     </div>
     <div class="">
         <div *ngFor="let tarea of getList('started'); let i = index">
             <div class="tarea-style started">
-                <a (click)="edit(i)">
+                <a (click)="edit(i,'started')">
                     {{tarea}}
                 </a>
                 <div class="icon">

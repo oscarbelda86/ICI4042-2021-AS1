@@ -10,6 +10,7 @@ import { ListComponent } from './list/list.component';
 import { FooterComponent } from './footer/footer.component';
 
 import {ListaTareasService} from './lista-tareas.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import {ListaTareasService} from './lista-tareas.service';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    NgbModule,
     
   ],
   providers: [ListaTareasService],

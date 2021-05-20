@@ -21,12 +21,13 @@ export class ListComponent implements OnInit {
   delete(listName:string,index:number){
     this.tareasService.delete(listName,index);
   }
+
   getList(listName:string){
     return this.tareasService.getList(listName);
   }
 
-  edit(index:number, listName:string = "started"){
-    this.editData.emit(this.tareasService.getList(listName)?.[index]);
+  edit(index:number, listName:string){
+    this.editData.emit(listName + " " + this.tareasService.getList(listName)?.[index]);
   //  this.tareasService.delete(listName,index);
   }
 

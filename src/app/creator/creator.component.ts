@@ -13,7 +13,9 @@ export class CreatorComponent implements OnInit{
   showed = false;
   summoned = true;
   
-  @Input() title: string ='';
+  title ='';
+  oldTitle = '';
+  oldStatus = '';
 
 
   tarea: FormGroup;
@@ -36,9 +38,18 @@ export class CreatorComponent implements OnInit{
 
   change(newTitle:string){
     console.log(newTitle)
+    console.log(newTitle.split(" ")[0])
     if(newTitle == ""){
+      this.summoned = true;
+    }
+    else{
       this.summoned = false;
-    }else{this.summoned = true}
+      this.tarea.controls["status"].setValue(newTitle.split(" ")[0]);
+      this.oldStatus = newTitle.split(" ")[0];
+      newTitle = newTitle.replace(newTitle.split(" ")[0],"").trim();
+      this.oldTitle = newTitle;
+    }
+
     this.title = newTitle;
     this.tarea.controls["title"].setValue(newTitle)
     this.showed = true;
@@ -53,8 +64,9 @@ export class CreatorComponent implements OnInit{
   cancel(){
     this.formReset();
     this.showed = false;
-    this.title ="canceled";
-    this.summoned = false;
+    this.summoned = true;
+    this.oldTitle = "";
+    this.oldStatus = "";
   }
 
   validate(){
@@ -62,10 +74,11 @@ export class CreatorComponent implements OnInit{
   }
 
   updateList(){
-    console.log(this.title);
-    if(this.title != ""){
-      this.tareasService.deleteFromAll(this.title);
+    if(!this.summoned){
+      this.tareasService.deleteFromStatus(this.oldStatus, this.oldTitle);
     }
+    console.log(this.title);
+    
     this.tareasService.add(this.tarea.controls["title"].value,this.tarea.controls["status"].value);
     this.showed = false;
     this.formReset();

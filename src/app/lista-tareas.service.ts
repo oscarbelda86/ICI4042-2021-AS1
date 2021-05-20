@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class ListaTareasService {  
   mainDict = new Map<string, string[]>();
+//  mainDict = new Map<string, Map<string,string>[]>();
+
 
   constructor() { 
     this.mainDict.set('started', ["ejemplo inicado 1","ejemplo iniciado 2"])
@@ -16,12 +18,12 @@ export class ListaTareasService {
   delete(listName:string, index:number){
     this.mainDict.get(listName)?.splice(index,1);
   }
-
-  deleteFromAll(title:string){
-    for (let list of this.mainDict.values()){
-      if (list.indexOf(title) != -1){
-        list.splice(list.indexOf(title),1)
-      }
+  deleteFromStatus(listName:string, title:string){
+    var index = this.mainDict.get(listName)?.indexOf(title);
+    if (!index ||index == -1){
+      return
+    }else{
+    this.mainDict.get(listName)?.splice(index,1);
     }
   }
 
