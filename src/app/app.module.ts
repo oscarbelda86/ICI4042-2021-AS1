@@ -11,6 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 
 import {ListaTareasService} from './lista-tareas.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     ReactiveFormsModule,
     NgbModule,
+    HttpClientModule,
     
   ],
   providers: [ListaTareasService],

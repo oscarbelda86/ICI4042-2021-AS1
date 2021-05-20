@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ export class ListaTareasService {
 //  mainDict = new Map<string, Map<string,string>[]>();
 
 
-  constructor() { 
+  constructor(private http: HttpClient) { 
     this.mainDict.set('started', ["ejemplo inicado 1","ejemplo iniciado 2"])
     this.mainDict.set("ongoing",["ejemplo en proceso 1","ejemplo en proceso 2"])
     this.mainDict.set("finished",["ejemplo finalizado 1","ejemplo finalizado 2"])
